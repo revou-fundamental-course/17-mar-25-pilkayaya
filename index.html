@@ -1,21 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Katik - Rizka</title>
 
     <!-- Css External -->
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- Header -->
-    <header></header>
+    <header class="main-header">
+        <h1>Katik (Kalkulator Matematik)</h1>
+    </header>
 
     <!-- Main content -->
-    <main></main>
-    
+    <main>
+        <header>
+            <h1>Welcome to Katik!</h1>
+        </header>
+
+        <p> Hai sobat, selamat datang di Katik!</p>
+        <p>Katik adalah website untuk membantu kamu menghitung luas dan keliling persegi serta persegi panjang.</p>
+
+        <!-- Pilihan Bangun Datar -->
+        <div class="nav-fitur">
+            <button class="nav-fitur-active" onclick="tampilkanPersegi()">Persegi</button>
+            <button class="nav-fitur-non-active" onclick="tampilkanPersegiPanjang()">Persegi Panjang</button>
+        </div>
+
+        <!-- Persegi -->
+        <div id="containerPersegi" class="content-container">
+            <h2>Persegi</h2>
+            <img src="assets/persegi.png" alt="Persegi" class="shape-image">
+            <div class="switch-container">
+                <label>
+                    <input type="radio" id="radioLuasPersegi" name="persegi" onclick="tampilkanLuasPersegi()" checked>
+                    Luas
+                </label>
+                <label>
+                    <input type="radio" id="radioKelilingPersegi" name="persegi" onclick="tampilkanKelilingPersegi()">
+                    Keliling
+                </label>
+            </div>
+
+            <!-- Luas Persegi -->
+            <div id="luasPersegi" class="calculate-content">
+                <h3 style="text-align: center;">Luas Persegi</h3>
+                <div class="rumus-container">
+                    <h3>Rumus:</h3>
+                    <p class="rumus-highlight">L = S × S</p>
+                    <p>Keterangan:</p>
+                    <p>L = Luas</p>
+                    <p>S = Sisi</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="sisiLuas" placeholder="Masukkan sisi">
+                    <button onclick="hitungLuasPersegi()">Hitung</button>
+                </div>
+                <div id="resultLuasPersegi" class="result-container" style="display: none;"></div>
+            </div>
+
+            <!-- Keliling Persegi -->
+            <div id="kelilingPersegi" class="calculate-content" style="display: none;">
+                <h3 style="text-align: center;">Keliling Persegi</h3>
+                <div class="rumus-container">
+                    <h3>Rumus:</h3>
+                    <p class="rumus-highlight">K = 4 × S</p>
+                    <p>Keterangan:</p>
+                    <p>K = Keliling</p>
+                    <p>S = Sisi</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="sisiKeliling" placeholder="Masukkan sisi">
+                    <button onclick="hitungKelilingPersegi()">Hitung</button>
+                </div>
+                <div id="resultKelilingPersegi" class="result-container" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Persegi Panjang -->
+        <div id="containerPersegiPanjang" class="content-container" style="display: none;">
+            <h2>Persegi Panjang</h2>
+            <img src="assets/persegipanjang.png" alt="Persegi Panjang" class="shape-image">
+            <div class="switch-container">
+                <label>
+                    <input type="radio" id="radioLuasPersegiPanjang" name="persegiPanjang" onclick="tampilkanLuasPersegiPanjang()" checked>
+                    Luas
+                </label>
+                <label>
+                    <input type="radio" id="radioKelilingPersegiPanjang" name="persegiPanjang" onclick="tampilkanKelilingPersegiPanjang()">
+                    Keliling
+                </label>
+            </div>
+
+            <!-- Luas Persegi Panjang -->
+            <div id="luasPersegiPanjang" class="calculate-content">
+                <h3 style="text-align: center;">Luas Persegi Panjang</h3>
+                <div class="rumus-container">
+                    <h3>Rumus:</h3>
+                    <p class="rumus-highlight">L = P × <span class="keterangan-lebar">L</span></p>
+                    <p>Keterangan:</p>
+                    <p><span class="keterangan-luas">L</span> = Luas</p>
+                    <p>P = Panjang</p>
+                    <p><span class="keterangan-lebar">L</span> = Lebar</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="panjangLuas" placeholder="Masukkan panjang">
+                    <input type="text" id="lebarLuas" placeholder="Masukkan lebar">
+                    <button onclick="hitungLuasPersegiPanjang()">Hitung</button>
+                </div>
+                <div id="resultLuasPersegiPanjang" class="result-container" style="display: none;"></div>
+            </div>
+
+            <!-- Keliling Persegi Panjang -->
+            <div id="kelilingPersegiPanjang" class="calculate-content" style="display: none;">
+                <h3 style="text-align: center;">Keliling Persegi Panjang</h3>
+                <div class="rumus-container">
+                    <h3>Rumus:</h3>
+                    <p class="rumus-highlight">K = 2 × (P + L)</p>
+                    <p>Keterangan:</p>
+                    <p>K = Keliling</p>
+                    <p>P = Panjang</p>
+                    <p>L = Lebar</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="panjangKeliling" placeholder="Masukkan panjang">
+                    <input type="text" id="lebarKeliling" placeholder="Masukkan lebar">
+                    <button onclick="hitungKelilingPersegiPanjang()">Hitung</button>
+                </div>
+                <div id="resultKelilingPersegiPanjang" class="result-container" style="display: none;"></div>
+            </div>
+        </div>
+        <button onclick="resetForm()" class="reset-button">Reset</button>
+    </main>
+
     <!-- Footer -->
-    <footer></footer>
+    <footer>
+        <p>Made by Rizka</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
+
 </html>
